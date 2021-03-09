@@ -1,33 +1,38 @@
 package fly.leetcode.cn.q53;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 class Solution {
-    int max = Integer.MIN_VALUE;
 
-    public int maxSubArray(int[] nums) {
-        if (nums.length < 2){
-            return nums[1];
-        }
-        int last = nums[nums.length-1];
-        int tailHilltop = tailHilltop(nums);
-        int[] subNums = new int[nums.length - 1];
-        System.arraycopy(nums,0,subNums,0,subNums.length);
-        return Math.max(last,Math.max(tailHilltop,maxSubArray(subNums)));
+    public int maxSubArray(int[] nums){
+        return maxSubArray0(nums)[0];
     }
-
-    public int tailHilltop(int[] nums){
-        Integer top = null;
-        for (int i = nums.length - 1; i >= 0; --i) {
-            if (top == null){
-                top = nums[i];
-            }else {
-                int sum = top + nums[i];
-                if (sum < top){
-                    return top;
-                } else {
-                    top = sum;
-                }
-            }
+    public int[] maxSubArray0(int[] nums){
+        int len = nums.length;
+        int last = nums[len-1];
+        if (len < 2){
+            //退出末尾时负载为末尾值
+            return new int[]{last,last};
         }
-        return top;
+
+        int[] max_cap = maxSubArray0(Arrays.copyOf(nums, len - 1));
+        int subMax = max_cap[0];
+        // 最大值到末尾的和（前置负载）
+        int subCap = max_cap[1];// 不用比较
+        // 如果负载已经小于0，可以干脆重新开始计算负载
+        subCap = subCap < 0?0:subCap;
+        int capSum = subCap + last;
+
+        int max = Math.max(last,Math.max(subMax,capSum));
+
+        if (max == last){
+            return new int[]{last,last};
+        } else if (max == capSum){
+            return new int[]{capSum,capSum};
+        } else {
+            return new int[]{subMax,capSum};
+        }
+
     }
 }
