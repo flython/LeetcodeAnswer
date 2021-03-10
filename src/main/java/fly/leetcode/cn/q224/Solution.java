@@ -1,11 +1,6 @@
 package fly.leetcode.cn.q224;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Stack;
-
-import static org.apache.logging.log4j.ThreadContext.peek;
-import static org.apache.logging.log4j.ThreadContext.pop;
 
 /**
  * 基本计算器
@@ -79,7 +74,9 @@ class Solution {
         if (numBuilder.length() > 0){
             calStack.push(Integer.valueOf(numBuilder.toString()));
         }
-        operatorStack.forEach(op->doCal(op,calStack));
+        while (!operatorStack.empty()){
+            doCal(operatorStack.pop(),calStack);
+        }
         return (Integer) calStack.pop();
     }
 
