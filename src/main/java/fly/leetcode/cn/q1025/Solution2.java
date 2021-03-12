@@ -14,16 +14,17 @@ import java.util.*;
  *
  */
 
-class Solution {
-
-    Map<Integer,Boolean> markBook = new HashMap<>();
+class Solution2 extends Solution {
 
 
+    public static final byte[] bytes = new byte[1001];
+
+    @Override
     public boolean divisorGame(int N) {
         //复用Solution的情况下加速游戏
-        Boolean pre = markBook.get(N);
-        if (pre != null){
-            return pre;
+        byte b = bytes[N];
+        if (b != 0){
+            return b==(byte) 1;
         }
 
         boolean res = false;
@@ -39,7 +40,7 @@ class Solution {
             }
         }
 
-        markBook.put(N,res);
+        bytes[N] = (byte) (res?1:-1);
         return res;
     }
 }

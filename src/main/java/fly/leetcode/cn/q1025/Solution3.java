@@ -1,8 +1,6 @@
 package fly.leetcode.cn.q1025;
 
-import com.sun.source.doctree.SeeTree;
-
-import java.util.*;
+import java.util.BitSet;
 
 /**
 
@@ -14,32 +12,15 @@ import java.util.*;
  *
  */
 
-class Solution {
+class Solution3 extends Solution {
 
-    Map<Integer,Boolean> markBook = new HashMap<>();
+    public static final BitSet bitset = BitSet.valueOf(new long[]{6148914691236517204L, 6148914691236517205L, 6148914691236517205L, 6148914691236517205L,
+            6148914691236517205L, 6148914691236517205L, 6148914691236517205L, 6148914691236517205L,
+            6148914691236517205L, 6148914691236517205L, 6148914691236517205L, 6148914691236517205L,
+            6148914691236517205L, 6148914691236517205L, 6148914691236517205L, 1466015503701L});
 
-
+    @Override
     public boolean divisorGame(int N) {
-        //复用Solution的情况下加速游戏
-        Boolean pre = markBook.get(N);
-        if (pre != null){
-            return pre;
-        }
-
-        boolean res = false;
-        // 如果N==1 天然False
-        if (N != 1) {
-            //因数只能取到前半
-            int halfN = N/2;
-            for (int i = 1; i <= halfN; i++) {
-                //如果是因数，且轮到对手时游戏局面为后手必输
-                if ( N % i == 0 && !divisorGame(N-i)){
-                    res = true;
-                }
-            }
-        }
-
-        markBook.put(N,res);
-        return res;
+        return bitset.get(N);
     }
 }
