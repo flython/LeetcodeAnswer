@@ -30,12 +30,17 @@ class SolutionQuickly {
         if(n<=2) return n;
         matrix ans=new matrix(),res=new matrix();
 
+        // ans
         // 1 0 0
         // 0 1 0
         // 0 0 1
         for(int i=0;i<3;i++)
             ans.m[i][i]=1;
 
+        // res
+        // 1 1 1
+        // 1 0 0
+        // 0 1 0
         res.m[0][0]=1;
         res.m[0][1]=1;
         res.m[0][2]=1;
