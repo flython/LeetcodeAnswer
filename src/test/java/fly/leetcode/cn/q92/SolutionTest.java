@@ -10,9 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 
-    Solution2 s = new Solution2();
+    Solution s = new Solution();
 
-    @CsvSource(value = {"[1,2,3,4,5]`2`4`[1,4,3,2,5]"},delimiter = '`')
+    @CsvSource(value = {"" +
+            "[1,2,3,4,5]`2`4`[1,4,3,2,5]",
+            "[1,2,3,4,5]`1`5`[5,4,3,2,1]",
+    },delimiter = '`')
     @ParameterizedTest
     void reverseBetween(@ConvertWith(IntArrayConverter.class) int[] list, int left, int right, @ConvertWith(IntArrayConverter.class) int[] result) {
         ListNode listNode = null;

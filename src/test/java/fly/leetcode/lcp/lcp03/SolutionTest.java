@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SolutionTest {
 
-    Solution3 s = new Solution3();
+    Solution2 s = new Solution2();
 
     @Test
     void robot() {

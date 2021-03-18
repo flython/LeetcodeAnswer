@@ -1,5 +1,8 @@
 package fly.leetcode.lcp.lcp03;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.LinkedList;
@@ -14,21 +17,45 @@ import java.util.LinkedList;
  * 执行用时： 1 ms , 在所有 Java 提交中击败了 68.82% 的用户 内存消耗： 38.3 MB , 在所有 Java 提交中击败了 77.78% 的用户
  */
 class Solution2 {
+
+    //使用带偏移的BitSet，可以减少一点内存占用
+    static class MapPointer{
+        int first = -1;
+        BitSet more;
+
+        void set(int i){
+            if(first < 0){
+                first = i;
+                more = new BitSet();
+                more.set(0);
+            } else {
+                more.set(i - first);
+            }
+        }
+
+        boolean get(int i){
+            if (i < first){
+                return false;
+            }
+            return more.get(i-first);
+        }
+    }
+
     public boolean robot(String command, int[][] obstacles, int x, int y) {
 
-        ArrayList<BitSet> road = new ArrayList<>();
+        ArrayList<MapPointer> road = new ArrayList<>(command.length()>>1);
 
         int posX = 0;
         int posY = 0;
 
         // 使用BitSet记住地图
-        road.add(new BitSet());
+        road.add(new MapPointer());
         road.get(0).set(0);
         for (int i = 0, charArrayLength = command.length(); i < charArrayLength; i++) {
             char c = command.charAt(i);
             if (c == 'R') {
                 ++posX;
-                road.add(new BitSet(posY+1));
+                road.add(new MapPointer());
             } else {
                 ++posY;
             }

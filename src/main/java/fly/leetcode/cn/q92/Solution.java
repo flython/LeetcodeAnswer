@@ -1,32 +1,47 @@
 package fly.leetcode.cn.q92;
 
 /**
+ * 1 2 3 4 5
+ * 2,4
  * 1. 注意left right的大小关系，边界值，1 ≤ m ≤ n ≤ 链表长度。
  * 2. 范围从1开始
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode top = head;
-        ListNode tmp = top.next;
-        // left == 1 时不会移动
-        for (int i = 1; i < left; i++) {
-            top = top.next;
-            tmp = top.next;
+        ListNode protect = head;
+        ListNode tmp;
+        ListNode reverse = null;
+        ListNode tail = null;
+
+        //protect 一开始已经等于第一个
+        for (int i = 2; i < left; i++) {
+            protect = protect.next;
         }
 
-        for (int i = right - left - 2; i >= 0; i--) {
-            if (i == 0){
-                //由于不能翻转第一个Node，所以相互赋值
-                var tmpVal = tmp.next.val;
-                tmp.next.val = top.val;
-                top.val = tmpVal;
-                break;
+        //指向第一个翻转
+        tmp = protect.next;
+
+        // 2 - 4 有三个点
+        for (int i = left; i <= right; i++) {
+            if (reverse == null){
+                tail = new ListNode(tmp.val,null);
+                reverse = tail;
+            } else {
+                reverse = new ListNode(tmp.val,reverse);
             }
-            var cur = tmp;
             tmp = tmp.next;
-            var next = tmp.next;
         }
-        top.next = tmp;
-        return head;
+
+        protect.next = reverse;
+        if (tail != null){
+            tail.next = tmp;
+        }
+
+        if (left == 1){
+            return reverse;
+        } else {
+            return head;
+        }
+
     }
 }
