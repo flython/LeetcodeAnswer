@@ -1,47 +1,35 @@
 package fly.leetcode.cn.q92;
 
+import java.util.List;
+
 /**
- * 1 2 3 4 5
- * 2,4
  * 1. 注意left right的大小关系，边界值，1 ≤ m ≤ n ≤ 链表长度。
  * 2. 范围从1开始
+ * 原题目说只能遍历一次
+ *
+ * 额...我拿数组来保存不知道算不算遍历一次
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        ListNode protect = head;
-        ListNode tmp;
-        ListNode reverse = null;
-        ListNode tail = null;
+        ListNode[] arr = new ListNode[right-left+1];
 
-        //protect 一开始已经等于第一个
-        for (int i = 2; i < left; i++) {
-            protect = protect.next;
+        ListNode p = head;
+        for (int i = 1; i < left; i++) {
+            p = p.next;
         }
 
-        //指向第一个翻转
-        tmp = protect.next;
-
-        // 2 - 4 有三个点
-        for (int i = left; i <= right; i++) {
-            if (reverse == null){
-                tail = new ListNode(tmp.val,null);
-                reverse = tail;
-            } else {
-                reverse = new ListNode(tmp.val,reverse);
-            }
-            tmp = tmp.next;
+        for (int i = 0; i <= right-left ; i++) {
+            arr[i] = p;
+            p = p.next;
         }
 
-        protect.next = reverse;
-        if (tail != null){
-            tail.next = tmp;
+        for (int i = 0; i < arr.length/2; i++) {
+            ListNode switcher = arr[arr.length - 1 - i];
+            arr[i].val = arr[i].val ^ switcher.val;
+            switcher.val = arr[i].val ^ switcher.val;
+            arr[i].val = arr[i].val ^ switcher.val;
         }
 
-        if (left == 1){
-            return reverse;
-        } else {
-            return head;
-        }
-
+        return head;
     }
 }
