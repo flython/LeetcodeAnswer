@@ -1,5 +1,7 @@
 package fly.leetcode.cn.q92;
 
+import fly.leetcode.support.ListNode;
+
 /**
  * 网上找的，报错了
  */

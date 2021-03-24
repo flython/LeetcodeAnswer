@@ -1,6 +1,6 @@
 package fly.leetcode.cn.q92;
 
-import java.util.List;
+import fly.leetcode.support.ListNode;
 
 /**
  * 1. 注意left right的大小关系，边界值，1 ≤ m ≤ n ≤ 链表长度。

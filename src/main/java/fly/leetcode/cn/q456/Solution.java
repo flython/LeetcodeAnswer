@@ -2,6 +2,7 @@ package fly.leetcode.cn.q456;
 
 import java.util.BitSet;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 怎么感觉是动态规划呢。
@@ -18,22 +19,14 @@ class Solution {
             return false;
         }
 
-        LinkedList<int[][]> list = new LinkedList<>();
+        int maxEverPop = 0;
+        //单调栈
+        Queue<Integer> monotonousStack = new LinkedList<>();
 
-        int partMin = nums[0];
-        int max = partMin;
-        int mostMin = partMin;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            int num = nums[i];
 
-        for (int i = 1; i < nums.length; i++) {
-            if (bitSet.get(nums[i] + 1_000_000_000)){
-                return true;
-            }
 
-            if (nums[i] < mostMin){
-                mostMin = nums[i];
-            } else if (nums[i] - mostMin > 1){
-                bitSet.set(mostMin+1_000_000_001,nums[i] + 999_999_999);
-            }
         }
 
         return false;
