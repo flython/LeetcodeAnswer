@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * 首先使用一种比较简单的方法，采用新增节点的方法
+ * 这个方法内存跟速度都不优秀，采用重新连接链的方式
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
