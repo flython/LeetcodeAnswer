@@ -7,7 +7,7 @@ import org.junit.jupiter.params.converter.SimpleArgumentConverter;
 
 public class IntArrayConverter extends SimpleArgumentConverter {
     @Override
-    protected Object convert(Object source, Class<?> targetType) throws ArgumentConversionException {
+    protected int[] convert(Object source, Class<?> targetType) throws ArgumentConversionException {
         String array = (String) source;
         JSONArray jsonArray = JSON.parseArray(array);
         int[] res = new int[jsonArray.size()];

@@ -7,33 +7,32 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * 排序性是一个重要的点
+ * 首先使用一种比较简单的方法，采用新增节点的方法
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        boolean deleteCurrent = false;
-        ListNode current = head;
-        ListNode pre = head;
+        ListNode holder = new ListNode(-101,null);
+        ListNode current  = holder;
 
-        do {
-            if (current.next.val == current.val){
-                //删除当前的下一节点，并标记当前节点也需要删除
-                current.next = current.next.next;
-                deleteCurrent = true;
-            } else {
-                ListNode next = current.next;
-                if (deleteCurrent){
-                    if (pre == current){
-                        pre = next;
-                    } else {
-                        pre.next = next;
-                    }
-                }
-                pre = current;
-                current = next;
+        boolean keepThisNode = true;
+
+        while (head != null){
+            while (head.next != null && head.val == head.next.val){
+                //缩短一个重复节点
+                head.next = head.next.next;
+                keepThisNode = false;
             }
-        } while (current.next != null);
+            if (keepThisNode){
+                current.next = head;
+                current = current.next;
+            } else {
+                current.next = null;
+            }
 
-        return head;
+            head = head.next;
+            keepThisNode=true;
+        }
+
+        return holder.next;
     }
 }
