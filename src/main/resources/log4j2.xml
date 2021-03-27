@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <!-- 级别优先级:
+            trace:最低的,
+            debug:一般打印一些提示信息:给开发人员看的
+            info:提示信息:一般是给运维看的
+            warn:警告一下
+            error:代码报异常,把异常信息记录下来
+         -->
+        <Root level="info">
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>

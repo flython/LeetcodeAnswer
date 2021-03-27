@@ -17,9 +17,11 @@ class Solution {
     public ListNode rotateRight(ListNode head, int k) {
         if (k == 0 || head == null || head.next == null){return head;}
         ListNode faster = head;
-        ListNode slower;
+        ListNode slower = head;
         int len = 0;
-        while (true){
+
+        while (len++ != k){
+            faster = faster.next;
             //提前达到末尾，证明k比长度大
             if (faster == null){
                 k = k % len;
@@ -27,21 +29,13 @@ class Solution {
                 if (k == 0){
                     return head;
                 }
-
                 //使快指针重新出发一遍
                 faster = head;
                 for (int i = 0; i < k; i++) {
                     faster = faster.next;
                 }
-                slower = head;
                 break;
             }
-            if (len == k){
-                slower = head;
-                break;
-            }
-            faster = faster.next;
-            len++;
         }
 
         //遍历到指向最后节点，此时slower指向的是新的末尾
@@ -49,7 +43,6 @@ class Solution {
             faster = faster.next;
             slower = slower.next;
         }
-
         // 把slower变成末尾，把slower.next变成头，把原来的头连到faster后
         faster.next = head;
         head = slower.next;
