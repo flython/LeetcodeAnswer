@@ -1,18 +1,18 @@
-package fly.leetcode.cn.test;
+package fly.leetcode.cn.q1116;
 
-
-import fly.leetcode.cn.q1116.ZeroEvenOdd;
-import fly.leetcode.cn.q365.Solution;
-import org.junit.Test;
+import lombok.SneakyThrows;
+import org.junit.jupiter.api.Test;
 
 import static cn.flython.utils.TimeStatisticsUtils.nanoEnd;
 import static cn.flython.utils.TimeStatisticsUtils.nanoStart;
+import static org.junit.jupiter.api.Assertions.*;
+
+class ZeroEvenOddTest {
 
 
-public class HereWeGo {
-
+    @SneakyThrows
     @Test
-    public void q1116() throws InterruptedException {
+    void zero() {
         ZeroEvenOdd zeroEvenOdd = new ZeroEvenOdd(1000);
 
         Thread t1 = new Thread(()->{
@@ -45,12 +45,4 @@ public class HereWeGo {
         t3.join();
         nanoEnd();
     }
-
-    @Test
-    public void q365(){
-        Solution solution = new Solution();
-        System.out.println(solution.canMeasureWater(13,11,1));
-    }
-
-
 }

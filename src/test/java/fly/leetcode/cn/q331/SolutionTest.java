@@ -1,8 +1,9 @@
 package fly.leetcode.cn.q331;
 
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SolutionTest {
     Solution2 s = new Solution2();

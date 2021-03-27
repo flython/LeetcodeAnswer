@@ -1,5 +1,8 @@
 package fly.leetcode.cn.q365;
 
+/**
+ * TODO 以前做的题目，有空需要重新做一遍，看起来好复杂
+ */
 public class Solution {
     public boolean canMeasureWater(int x, int y, int z) {
         if(z == 0 || z == x || z == y)return true;

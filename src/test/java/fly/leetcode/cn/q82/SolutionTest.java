@@ -34,7 +34,6 @@ class SolutionTest {
             assertEquals(res.getInteger(i++),output.val);
             output = output.next;
         }
-
         assertEquals(i,res.size());
 
     }

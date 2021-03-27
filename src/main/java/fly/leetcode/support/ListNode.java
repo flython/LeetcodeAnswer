@@ -1,5 +1,6 @@
 package fly.leetcode.support;
 
+
 public class ListNode {
     public int val;
     public ListNode next;

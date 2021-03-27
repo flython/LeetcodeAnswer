@@ -5,6 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.IntConsumer;
 
 /**
+ * TODO 也是以前做的题目，有空可以重新做
  * n=1000
  * 运行时间16655000ns，大约为16ms
  * 运行时间17200400ns，大约为17ms

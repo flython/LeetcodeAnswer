@@ -1,13 +1,11 @@
 package fly.leetcode.cn.q54;
 
-import org.junit.Test;
-import org.junit.rules.Stopwatch;
+
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SolutionTest {
 
@@ -31,7 +29,7 @@ public class SolutionTest {
     void check(List<Integer> list, int... ints){
         for (int i = 0; i < list.size(); i++) {
             Integer integer = list.get(i);
-            assertTrue("index:"+i,integer.equals(ints[i]));
+            assertTrue(integer.equals(ints[i]),"index:"+i);
         }
     }
 

@@ -1,7 +1,6 @@
 package fly.leetcode.cn.q456;
 
-import fly.test.converter.IntArrayConverter;
-import org.junit.jupiter.api.Test;
+import fly.testutils.converter.IntArrayConverter;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvSource;

@@ -1,7 +1,7 @@
 package fly.leetcode.cn.q92;
 
 import fly.leetcode.support.ListNode;
-import fly.test.converter.IntArrayConverter;
+import fly.testutils.converter.IntArrayConverter;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvSource;

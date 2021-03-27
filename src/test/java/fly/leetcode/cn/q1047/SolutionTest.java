@@ -1,9 +1,11 @@
 package fly.leetcode.cn.q1047;
 
-import junit.framework.TestCase;
-import org.junit.Test;
 
-public class SolutionTest extends TestCase {
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class SolutionTest {
 
     Solution solution = new Solution();
 

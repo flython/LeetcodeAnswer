@@ -1,7 +1,6 @@
 package fly.leetcode.cn.q73;
 
-import fly.test.converter.IntMatrixConverter;
-import org.junit.jupiter.api.Test;
+import fly.testutils.converter.IntMatrixConverter;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvSource;
