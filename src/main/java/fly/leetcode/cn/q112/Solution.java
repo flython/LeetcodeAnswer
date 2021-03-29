@@ -1,7 +1,7 @@
 package fly.leetcode.cn.q112;
 
 import fly.leetcode.cn.q297.Codec;
-import fly.leetcode.cn.support.TreeNode;
+import fly.leetcode.support.TreeNode;
 
 
 /**

@@ -1,6 +1,6 @@
 package fly.leetcode.cn.q1208;
 
-import fly.leetcode.cn.support.TreeNode;
+import fly.leetcode.support.TreeNode;
 
 import java.util.Stack;
 import java.util.regex.Matcher;

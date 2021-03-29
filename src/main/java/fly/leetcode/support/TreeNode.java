@@ -1,4 +1,4 @@
-package fly.leetcode.cn.support;
+package fly.leetcode.support;
 
 public class TreeNode {
     public int val;

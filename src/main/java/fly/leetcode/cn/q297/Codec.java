@@ -1,7 +1,7 @@
 package fly.leetcode.cn.q297;
 
 
-import fly.leetcode.cn.support.TreeNode;
+import fly.leetcode.support.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
