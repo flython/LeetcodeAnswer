@@ -13,6 +13,6 @@ public class TimeStatisticsUtils {
     public static void nanoEnd(){
         long time = System.nanoTime() - start.get();
         System.out.println();
-        log.info("运行时间{}ns，大约为{}ms",time, time / 1000000);
+//        log.info("运行时间{}ns，大约为{}ms",time, time / 1000000);
     }
 }
