@@ -31,7 +31,7 @@ class SolutionTest {
 
         int i = 0;
         while (output!= null){
-            assertEquals(res.getInteger(i++),output.val);
+            assertEquals(res.getInteger(i++).intValue(),output.val);
             output = output.next;
         }
         assertEquals(i,res.size());
