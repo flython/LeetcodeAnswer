@@ -5,25 +5,20 @@ package fly.leetcode.cn.q1006;
  * 运算顺序出了些问题，明天再看
  */
 class Solution {
+    //前四个
+    private static final int[] lefts= {0,1,2,6};
     public int clumsy(int n) {
         int full = n>>2;
-        int least = n&3;
+        int left = n&3;
+        int minus = lefts[left];
+        if (full == 0){
+            return minus;
+        }
         int minute = n*(n-1)/(n-2)+(n-3);
-        int minus = 0;
         for (int i = 1; i < full; i++) {
-            int base = n-(i << 2);
-            minus+=base*(base-1)/(base-2)+(base-3);
+            n-=4;
+            minus+=n*(n-1)/(n-2)-(n-3);
         }
-        //3*2/1
-        switch (least){
-            case 3:
-                minus+=6;
-            case 2:
-                minus+=2;
-            case 1:
-                minus+=1;
-        }
-
         return minute-minus;
     }
 }
