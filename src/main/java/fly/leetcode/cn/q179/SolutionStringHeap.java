@@ -1,7 +1,6 @@
 package fly.leetcode.cn.q179;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.PriorityQueue;
 
 /**
  * 345
@@ -20,21 +19,22 @@ import java.util.stream.Collectors;
  *      2.1 如果长度相等，则直接按照数字大小逆序
  *      2.2 如果长度不相等，把长的部分分成几份长度与短字符串相符的小字符串，然后分别按照此前规则比较，只要存在长字符串
  */
-class Solution {
+class SolutionStringHeap {
     public String largestNumber(int[] nums) {
-        String[] strings = new String[nums.length];
-        for (int i = 0; i < nums.length; i++) {
-            strings[i] = String.valueOf(nums[i]);
-        }
-        Arrays.sort(strings,(s1, s2) -> {
+        //大顶堆
+        PriorityQueue<String> heap = new PriorityQueue<>(nums.length,(s1, s2) -> {
             if (s1.length() == s2.length()){
                 return s2.compareTo(s1);
             }
             return (s2 + s1).compareTo(s1 + s2);
         });
+        for (int i = 0; i < nums.length; i++) {
+            heap.add(String.valueOf(nums[i]));
+        }
         StringBuilder collect = new StringBuilder();
-        for (String string : strings) {
-            collect.append(string);
+        //foreach并不保证堆顺序 heap.forEach(collect::append);
+        for (int i = 0; i < nums.length; i++) {
+            collect.append(heap.remove());
         }
         return collect.charAt(0)=='0'?"0":collect.toString();
     }
