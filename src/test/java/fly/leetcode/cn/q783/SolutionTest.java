@@ -16,7 +16,7 @@ class SolutionTest {
     @CsvSource(delimiter = '@',value = {
             "[1,0,48,null,null,12,49]@1",
             "[4,2,6,1,3]@1",
-            "[1,48684]@48683",
+            "[48684,1]@48683",
             "[1,-150]@151",
     })
     @ParameterizedTest

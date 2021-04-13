@@ -2,41 +2,30 @@ package fly.leetcode.cn.q783;
 
 import fly.leetcode.support.TreeNode;
 
-import java.util.BitSet;
-import java.util.LinkedList;
-import java.util.concurrent.ConcurrentSkipListSet;
-
 /**
  * 1. 二叉搜索树变链（中序遍历也行）
  * 2. 计算每一个间隔
  */
 class Solution {
-
-
+    int min;
+    TreeNode list;
     public int minDiffInBST(TreeNode root) {
         list = null;
-        parseTree(root);
-        int min = Integer.MAX_VALUE;
-        while (list.right != null){
-            min = Math.min(min,list.right.val - list.val);
-            list = list.right;
-        }
+        min = Integer.MAX_VALUE;
+        rightDfs(root);
         return min;
     }
 
-    TreeNode list;
-
-    private void parseTree(TreeNode node){
+    private void rightDfs(TreeNode node){
         if (node.right != null){
-            parseTree(node.right);
+            rightDfs(node.right);
         }
-        node.right = list;
+        if (list!=null){
+            min = Math.min(min, list.val - node.val);
+        }
         list = node;
         if (node.left != null){
-            parseTree(node.left);
+            rightDfs(node.left);
         }
     }
-
-
-
 }

@@ -6,7 +6,9 @@ import fly.leetcode.support.TreeNode;
 import org.junit.jupiter.params.converter.ArgumentConversionException;
 import org.junit.jupiter.params.converter.SimpleArgumentConverter;
 
+import javax.swing.text.html.Option;
 import java.util.LinkedList;
+import java.util.Optional;
 import java.util.Queue;
 
 public class TreeConverter extends SimpleArgumentConverter {
@@ -21,10 +23,9 @@ public class TreeConverter extends SimpleArgumentConverter {
         var res = new TreeNode(jsonArray.getInteger(0));
         queue.offer(res);
         for (int i = 1; i < jsonArray.size(); i++) {
-            var nodeValue = jsonArray.getInteger(i);
-            if (nodeValue == null){continue;}
-            var n = new TreeNode(nodeValue);
-            queue.offer(n);
+            var opt = Optional.ofNullable(jsonArray.getInteger(i)).map(TreeNode::new);
+            opt.ifPresent(queue::offer);
+            var n = opt.orElse(null);
             if ((i&1) == 1){
                 queue.peek().left = n;
             } else {
