@@ -1,18 +1,19 @@
 package fly.leetcode.cn.q208;
 
-import org.w3c.dom.Node;
-
 import java.util.LinkedList;
 
 /**
  * 208. 实现 Trie (前缀树)
+ * 执行用时： 54 ms , 在所有 Java 提交中击败了 22.36% 的用户
+ * 内存消耗： 55.9 MB , 在所有 Java 提交中击败了 5.02% 的用户
+ *
  */
-class Trie {
+class Trie26WayTree {
 
     Node root = new Node();
 
     /** Initialize your data structure here. */
-    public Trie() {
+    public Trie26WayTree() {
 
     }
 
