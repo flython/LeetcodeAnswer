@@ -10,55 +10,41 @@ import java.util.stream.Stream;
  */
 public class BtreeSearchRoadAsTargetVal {
     public static List<List<Integer>> solve(List<Integer> tree, int target){
-        class Package{
-            List<Integer> list;
-            int sum = 0;
-            public Package(List<Integer> list, int sum) {
-                this.list = list;
-                this.sum = sum;
-            }
-            public Optional<Package> add(int num){
-                int tmp = sum+num;
-                if (tmp <= target){
-                    Package newOne = new Package(Stream.concat(list.stream(),Stream.of(num)).collect(Collectors.toList()),tmp);
-                    return Optional.of(newOne);
-                }
-                return Optional.empty();
-            }
 
-            public List<Integer> getList() {
-                return list;
-            }
-
-            @Override
-            public String toString() {
-                return "Package{" +
-                        "list=" + list +
-                        ", sum=" + sum +
-                        '}';
-            }
-        }
-
-        Queue<Package> roads = new LinkedList<>();
-        LinkedList<List<Integer>> res = new LinkedList<>();
-        var first = new Package(List.of(tree.get(0)),tree.remove(0));
-        roads.add(first);
+        Queue<Node> leaves = new LinkedList<>();
+        leaves.offer(new Node(null, tree.remove(0)));
         while (!tree.isEmpty()){
-            int curSize = roads.size();
-            for (int i = 0; i < curSize; i++) {
-                Package curRoad = roads.poll();
-                if (curRoad.sum==target){
-                    curRoad.
-                }
-                for (int j = 0; j < 2; j++) {
-                    Optional.ofNullable(tree.remove(0)).flatMap(curRoad::add).ifPresent(roads::offer);
-                }
+            Node poll = leaves.poll();
+            for (int i = 0; i < 2 && !tree.isEmpty(); i++) {
+                Optional.ofNullable(tree.remove(0)).ifPresent(val->{
+                    leaves.offer(new Node(poll,val));
+                });
             }
         }
 
-        return roads.stream().map(Package::getList).collect(Collectors.toList());
-
+        List<List<Integer>> collect = leaves.stream().filter(leaf -> leaf.sum == target).map(leaf -> {
+            LinkedList<Integer> list = new LinkedList<>();
+            Node ptr = leaf;
+            while (ptr != null) {
+                list.addFirst(ptr.val);
+                ptr = ptr.parrent;
+            }
+            return list;
+        }).collect(Collectors.toList());
+        return collect;
     }
 
+
+    static class Node {
+        int val;
+        int sum;
+        Node parrent;
+        public Node(Node parrent, int val) {
+            this.parrent = parrent;
+            this.val = val;
+            this.sum = parrent==null?val:parrent.sum+val;
+        }
+
+    }
 
 }
