@@ -1,4 +1,4 @@
-package fly.leetcode.cn.q474;
+package fly.leetcode.cn.q474.old;
 
 import java.util.*;
 import java.util.stream.Collectors;

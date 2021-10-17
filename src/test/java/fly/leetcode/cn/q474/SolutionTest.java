@@ -6,10 +6,10 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class SolutionTest {
 
-    Solution2 s = new Solution2();
 
     private static Stream<Arguments> findMaxForm() {
         return Stream.of(
@@ -30,6 +30,6 @@ public class SolutionTest {
     @MethodSource
     @ParameterizedTest
     public void findMaxForm(String[] strs, int m, int n, int result) {
-        assertEquals(result,s.findMaxForm(strs, m, n));
+        assertEquals(result,new Solution().findMaxForm(strs, m, n));
     }
 }
